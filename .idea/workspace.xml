@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5bfc424-89f1-45be-b9f5-e60e9ebf359a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/springbase/idol/Poem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/springbase/idol/imp/PoeticJuggler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/springbase/idol/imp/Sonnet29.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/springbase/idol/imp/Stage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/springbase/main/MainTask.java" afterPath="$PROJECT_DIR$/src/main/java/com/springbase/main/MainTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-    </list>
+    <list default="true" id="b5bfc424-89f1-45be-b9f5-e60e9ebf359a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1079,7 +1071,7 @@
       <workItem from="1497364190028" duration="3799000" />
       <workItem from="1497448136383" duration="618000" />
       <workItem from="1497448798853" duration="2476000" />
-      <workItem from="1497531830876" duration="4050000" />
+      <workItem from="1497531830876" duration="4122000" />
     </task>
     <task id="LOCAL-00001" summary="结构调整">
       <created>1497368386505</created>
@@ -1095,11 +1087,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497451240812</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1.通过构造器注入2.通过工厂方法创造Bean">
+      <created>1497535985309</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1497535985309</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12555000" />
+    <option name="totallyTimeSpent" value="12627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1167,7 +1166,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="结构调整" />
     <MESSAGE value="添加接口Performer和实现方法Juggler" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加接口Performer和实现方法Juggler" />
+    <MESSAGE value="1.通过构造器注入2.通过工厂方法创造Bean" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.通过构造器注入2.通过工厂方法创造Bean" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
