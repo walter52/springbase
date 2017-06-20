@@ -12,4 +12,5 @@
     </bean>
 
     <bean id="theStage" class="com.springbase.idol.imp.Stage" factory-method="getInstance"/>
+    <bean id="auditorium" class="com.springbase.idol.imp.Auditorium" init-method="turnOnLights" destroy-method="turnOffLights"/>
 </beans>

@@ -1,6 +1,7 @@
 package com.springbase.main;
 
 import com.springbase.idol.Performer;
+import com.springbase.idol.imp.Auditorium;
 import com.springbase.idol.imp.Juggler;
 import com.springbase.idol.imp.Stage;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +23,7 @@ public class MainTask {
         //通过构造器注入引用
         Performer performer = (Performer) ctx.getBean("poeticJuggler");
         Stage stage = (Stage) ctx.getBean("theStage");
+       Auditorium auditorium = (Auditorium)ctx.getBean("auditorium");
         //输出
         performer.perform();
     }
