@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="duke" class="com.springbase.idol.imp.Juggler">
-        <constructor-arg value="15"></constructor-arg>
+        <constructor-arg value="15"/>
     </bean>
     <bean id="sonnet29" class="com.springbase.idol.imp.Sonnet29"/>
     <bean id="poeticJuggler" class="com.springbase.idol.imp.PoeticJuggler">
@@ -13,4 +13,9 @@
 
     <bean id="theStage" class="com.springbase.idol.imp.Stage" factory-method="getInstance"/>
     <bean id="auditorium" class="com.springbase.idol.imp.Auditorium" init-method="turnOnLights" destroy-method="turnOffLights"/>
+    <bean id="saxoPhone" class = "com.springbase.idol.imp.Saxophone"/>
+    <bean id="kenny" class="com.springbase.idol.imp.Instrumentalist">
+        <property name="song" value="东方红"/>
+        <property name="instrument" ref="saxoPhone"/>
+    </bean>
 </beans>
