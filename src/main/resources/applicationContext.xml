@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="duke" class="com.springbase.idol.imp.Juggler">
@@ -14,8 +15,22 @@
     <bean id="theStage" class="com.springbase.idol.imp.Stage" factory-method="getInstance"/>
     <bean id="auditorium" class="com.springbase.idol.imp.Auditorium" init-method="turnOnLights" destroy-method="turnOffLights"/>
     <bean id="saxoPhone" class = "com.springbase.idol.imp.Saxophone"/>
+    <bean id="guitar" class="com.springbase.idol.imp.Guitar"/>
     <bean id="kenny" class="com.springbase.idol.imp.Instrumentalist">
         <property name="song" value="东方红"/>
         <property name="instrument" ref="saxoPhone"/>
+    </bean>
+
+    <bean id="kennyP" class="com.springbase.idol.imp.Instrumentalist"
+          p:song="国歌"
+          p:instrument-ref="saxoPhone"/>
+
+    <bean id="hank" class="com.springbase.idol.imp.OneManBand">
+        <property name="instruments">
+            <list>
+                <ref bean="saxoPhone"/>
+                <ref bean="guitar"/>
+            </list>
+        </property>
     </bean>
 </beans>
