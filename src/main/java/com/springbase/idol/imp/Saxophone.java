@@ -8,6 +8,6 @@ import com.springbase.idol.Instrument;
 public class Saxophone implements Instrument {
     @Override
     public void play() {
-        System.out.println("萨克斯管");
+        System.out.println("play萨克斯管");
     }
 }

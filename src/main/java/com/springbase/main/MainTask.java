@@ -24,14 +24,16 @@ public class MainTask {
 
 
         //通过构造器注入引用
-        Performer performer = (Performer) ctx.getBean("poeticJuggler");
-        Stage stage = (Stage) ctx.getBean("theStage");
-        Auditorium auditorium = (Auditorium) ctx.getBean("auditorium");
+//        Performer performer = (Performer) ctx.getBean("poeticJuggler");
+//        Stage stage = (Stage) ctx.getBean("theStage");
+//        Auditorium auditorium = (Auditorium) ctx.getBean("auditorium");
 
         //注入和引用Bean的属性
 //        performer = (Performer) ctx.getBean("kenny"); //normal
+        performer = (Performer) ctx.getBean("carl"); //通过表达式调用kenny的属性
 //        performer = (Performer) ctx.getBean("kennyP"); //利用p命名空间
-        performer = (Performer) ctx.getBean("hank"); //装配集合（list ，set）
+//        performer = (Performer) ctx.getBean("hankList"); //装配集合（list ，set）
+//        performer = (Performer) ctx.getBean("hankMap");//装配map
         //输出
         performer.perform();
     }

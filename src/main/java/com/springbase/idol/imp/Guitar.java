@@ -8,6 +8,6 @@ import com.springbase.idol.Instrument;
 public class Guitar implements Instrument {
     @Override
     public void play() {
-        System.out.println("吉他");
+        System.out.println("play吉他");
     }
 }

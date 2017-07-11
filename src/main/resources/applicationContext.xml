@@ -17,15 +17,22 @@
     <bean id="saxoPhone" class = "com.springbase.idol.imp.Saxophone"/>
     <bean id="guitar" class="com.springbase.idol.imp.Guitar"/>
     <bean id="kenny" class="com.springbase.idol.imp.Instrumentalist">
-        <property name="song" value="东方红"/>
-        <property name="instrument" ref="saxoPhone"/>
+        <!--<property name="song" value="东方红"/>-->
+        <property name="song" value="#{'东方红'}"/>
+        <!--<property name="instrument" ref="saxoPhone"/>-->
+        <property name="instrument" value="#{saxoPhone}"/>
+    </bean>
+
+    <bean id="carl" class="com.springbase.idol.imp.Instrumentalist">
+        <property name="song" value="#{kenny.song}"/>
+        <property name="instrument" value="#{saxoPhone}"/>
     </bean>
 
     <bean id="kennyP" class="com.springbase.idol.imp.Instrumentalist"
           p:song="国歌"
           p:instrument-ref="saxoPhone"/>
 
-    <bean id="hank" class="com.springbase.idol.imp.OneManBand">
+    <bean id="hankList" class="com.springbase.idol.imp.OneManBandList">
         <property name="instruments">
             <list>
                 <ref bean="saxoPhone"/>
@@ -33,4 +40,13 @@
             </list>
         </property>
     </bean>
+    <bean id="hankMap" class="com.springbase.idol.imp.OneManBandMap">
+        <property name="instrumentMap">
+            <map>
+                <entry key="GUITAR" value-ref="guitar"/>
+                <entry key="SAXOPHONE" value-ref="saxoPhone"/>
+            </map>
+        </property>
+    </bean>
+
 </beans>
