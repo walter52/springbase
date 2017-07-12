@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
     <bean id="duke" class="com.springbase.idol.imp.Juggler">
         <constructor-arg value="15"/>
     </bean>
@@ -18,7 +22,8 @@
     <bean id="guitar" class="com.springbase.idol.imp.Guitar"/>
     <bean id="kenny" class="com.springbase.idol.imp.Instrumentalist">
         <!--<property name="song" value="东方红"/>-->
-        <property name="song" value="#{'东方红'}"/>
+        <!--<property name="song" value="#{'东方红'}"/>-->
+        <property name="song" value="#{T(java.lang.Math).random()}"/>
         <!--<property name="instrument" ref="saxoPhone"/>-->
         <property name="instrument" value="#{saxoPhone}"/>
     </bean>
@@ -49,4 +54,19 @@
         </property>
     </bean>
 
+    <util:list id="cities">
+        <bean class="com.springbase.idol.imp.City"
+              p:name="信阳" p:state="河南" p:population="600"/>
+        <bean class="com.springbase.idol.imp.City"
+              p:name="太原" p:state="山西" p:population="200"/>
+        <bean class="com.springbase.idol.imp.City"
+              p:name="桂林" p:state="广西" p:population="300"/>
+        <bean class="com.springbase.idol.imp.City"
+              p:name="深圳" p:state="广东" p:population="500"/>
+    </util:list>
+
+    <bean id="chooseCity" class="com.springbase.idol.imp.ChooseCity">
+        <!--<property name="theCity" value="#{cities[1]}"/>-->
+        <property name="theCity" value="#{cities[T(java.lang.Math).random()*cities.size()]}"/>
+    </bean>
 </beans>

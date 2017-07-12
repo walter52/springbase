@@ -1,10 +1,7 @@
 package com.springbase.main;
 
 import com.springbase.idol.Performer;
-import com.springbase.idol.imp.Auditorium;
-import com.springbase.idol.imp.Instrumentalist;
-import com.springbase.idol.imp.Juggler;
-import com.springbase.idol.imp.Stage;
+import com.springbase.idol.imp.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -36,5 +33,8 @@ public class MainTask {
 //        performer = (Performer) ctx.getBean("hankMap");//装配map
         //输出
         performer.perform();
+
+        ChooseCity city = (ChooseCity)ctx.getBean("chooseCity");
+        city.toChooseCity();
     }
 }
