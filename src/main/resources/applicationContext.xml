@@ -19,6 +19,7 @@
     <bean id="theStage" class="com.springbase.idol.imp.Stage" factory-method="getInstance"/>
     <bean id="auditorium" class="com.springbase.idol.imp.Auditorium" init-method="turnOnLights" destroy-method="turnOffLights"/>
     <bean id="saxoPhone" class = "com.springbase.idol.imp.Saxophone"/>
+    <bean id="instrument" class="com.springbase.idol.imp.Guitar"/>
     <bean id="guitar" class="com.springbase.idol.imp.Guitar"/>
     <bean id="kenny" class="com.springbase.idol.imp.Instrumentalist">
         <!--<property name="song" value="东方红"/>-->
@@ -26,6 +27,9 @@
         <property name="song" value="#{T(java.lang.Math).random()}"/>
         <!--<property name="instrument" ref="saxoPhone"/>-->
         <property name="instrument" value="#{saxoPhone}"/>
+    </bean>
+    <bean id="kenny_auto" class="com.springbase.idol.imp.Instrumentalist" autowire="byName">
+        <property name="song" value="Jingle Bells"/>
     </bean>
 
     <bean id="carl" class="com.springbase.idol.imp.Instrumentalist">
@@ -56,7 +60,7 @@
 
     <util:list id="cities">
         <bean class="com.springbase.idol.imp.City"
-              p:name="信阳" p:state="河南" p:population="600"/>
+              p:name="xin" p:state="河南" p:population="600"/>
         <bean class="com.springbase.idol.imp.City"
               p:name="太原" p:state="山西" p:population="200"/>
         <bean class="com.springbase.idol.imp.City"
