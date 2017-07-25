@@ -2,6 +2,7 @@ package com.springbase.idol.imp;
 
 import com.springbase.idol.Instrument;
 import com.springbase.idol.Performer;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by walter on 2017/6/22.
@@ -24,7 +25,7 @@ public class Instrumentalist implements Performer {
     public Instrument getInstrument() {
         return instrument;
     }
-
+    @Autowired
     public void setInstrument(Instrument instrument) {
         this.instrument = instrument;
     }

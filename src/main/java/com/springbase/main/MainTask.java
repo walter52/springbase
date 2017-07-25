@@ -17,8 +17,8 @@ public class MainTask {
         ApplicationContext ctx = new ClassPathXmlApplicationContext(SPRING_CONF);
 
         //通过构造器注入参数
-        //Performer performer = (Performer) ctx.getBean("duke");
-
+        Performer performer = (Performer) ctx.getBean("duke");
+        performer.perform();
 
         //通过构造器注入引用
 //        Performer performer = (Performer) ctx.getBean("poeticJuggler");
@@ -31,7 +31,7 @@ public class MainTask {
 //        performer = (Performer) ctx.getBean("kennyP"); //利用p命名空间
 //        performer = (Performer) ctx.getBean("hankList"); //装配集合（list ，set）
 //        performer = (Performer) ctx.getBean("hankMap");//装配map
-        performer = (Performer) ctx.getBean("kenny_auto"); //byname 自动装配
+        performer = (Performer) ctx.getBean("kenny_autoByName"); //byname 自动装配
         //输出
         performer.perform();
 
