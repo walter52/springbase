@@ -1,88 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!--自动注解装配-->
-    <context:annotation-config/>
+  <!--自动注解装配（需要<bean>,省略<property>和<constructor-arg>）-->
+  <!--<context:annotation-config/>-->
+  <!--除了有annotation-config的用处，还可以免<bean>的配置-->
+  <context:component-scan base-package="com.springbase">
 
-    <bean id="duke" class="com.springbase.idol.imp.Juggler">
-        <constructor-arg value="15"/>
-    </bean>
-    <bean id="sonnet29" class="com.springbase.idol.imp.Sonnet29"/>
-    <bean id="poeticJuggler" class="com.springbase.idol.imp.PoeticJuggler">
-        <constructor-arg value="30"/>
-        <constructor-arg ref="sonnet29"/>
-    </bean>
+  </context:component-scan>
 
-    <bean id="theStage" class="com.springbase.idol.imp.Stage" factory-method="getInstance"/>
-    <bean id="auditorium" class="com.springbase.idol.imp.Auditorium" init-method="turnOnLights" destroy-method="turnOffLights"/>
-    <bean id="saxoPhone" class = "com.springbase.idol.imp.Saxophone" primary="false"/>
-    <bean id="instrument" class="com.springbase.idol.imp.Guitar" primary="true"/>
-    <bean id="guitar" class="com.springbase.idol.imp.Guitar" autowire-candidate="true"/>
-    <bean id="kenny" class="com.springbase.idol.imp.Instrumentalist">
-        <!--<property name="song" value="东方红"/>-->
-        <!--<property name="song" value="#{'东方红'}"/>-->
-        <property name="song" value="#{T(java.lang.Math).random()}"/>
-        <!--<property name="instrument" ref="saxoPhone"/>-->
-        <property name="instrument" value="#{saxoPhone}"/>
-    </bean>
-    <bean id="kenny_autoByName" class="com.springbase.idol.imp.Instrumentalist" autowire="byName">
-        <property name="song" value="Jingle Bells"/>
-    </bean>
-    <!--<bean id="kenny_autoByType" class="com.springbase.idol.imp.Instrumentalist" autowire="byType">-->
-        <!--<property name="song" value="中国心"/>-->
-    <!--</bean>-->
 
-    <bean id="kenny_autoByType" class="com.springbase.idol.imp.Instrumentalist">
+  <bean id="duke" class="com.springbase.idol.imp.Juggler">
+    <constructor-arg value="15"/>
+  </bean>
+  <bean id="sonnet29" class="com.springbase.idol.imp.Sonnet29"/>
+  <bean id="poeticJuggler" class="com.springbase.idol.imp.PoeticJuggler">
+    <constructor-arg value="30"/>
+    <constructor-arg ref="sonnet29"/>
+  </bean>
+
+  <bean id="theStage" class="com.springbase.idol.imp.Stage" factory-method="getInstance"/>
+  <bean id="auditorium" class="com.springbase.idol.imp.Auditorium" init-method="turnOnLights"
+    destroy-method="turnOffLights"/>
+  <bean id="saxoPhone" class="com.springbase.idol.imp.Saxophone" primary="false"/>
+  <bean id="instrument" class="com.springbase.idol.imp.Guitar" primary="true"/>
+  <bean id="guitar" class="com.springbase.idol.imp.Guitar" autowire-candidate="true"/>
+  <bean id="kenny" class="com.springbase.idol.imp.Instrumentalist">
+    <!--<property name="song" value="东方红"/>-->
+    <!--<property name="song" value="#{'东方红'}"/>-->
+    <property name="song" value="#{T(java.lang.Math).random()}"/>
+    <!--<property name="instrument" ref="saxoPhone"/>-->
+    <property name="instrument" value="#{saxoPhone}"/>
+  </bean>
+  <bean id="kenny_autoByName" class="com.springbase.idol.imp.Instrumentalist" autowire="byName">
+    <property name="song" value="Jingle Bells"/>
+  </bean>
+  <!--<bean id="kenny_autoByType" class="com.springbase.idol.imp.Instrumentalist" autowire="byType">-->
+  <!--<property name="song" value="中国心"/>-->
+  <!--</bean>-->
+
+  <bean id="kenny_autoByType" class="com.springbase.idol.imp.Instrumentalist">
     <property name="song" value="中国心"/>
-    </bean>
+  </bean>
 
-    <bean id="carl" class="com.springbase.idol.imp.Instrumentalist">
-        <property name="song" value="#{kenny.song}"/>
-        <property name="instrument" value="#{saxoPhone}"/>
-    </bean>
+  <!--<bean id="carl" class="com.springbase.idol.imp.Instrumentalist">-->
+  <!--<property name="song" value="#{kenny.song}"/>-->
+  <!--<property name="instrument" value="#{saxoPhone}"/>-->
+  <!--</bean>-->
 
-    <bean id="kennyP" class="com.springbase.idol.imp.Instrumentalist"
-          p:song="国歌"
-          p:instrument-ref="saxoPhone"/>
+  <bean id="kennyP" class="com.springbase.idol.imp.Instrumentalist"
+    p:song="国歌"
+    p:instrument-ref="saxoPhone"/>
 
-    <bean id="hankList" class="com.springbase.idol.imp.OneManBandList">
-        <property name="instruments">
-            <list>
-                <ref bean="saxoPhone"/>
-                <ref bean="guitar"/>
-            </list>
-        </property>
-    </bean>
-    <bean id="hankMap" class="com.springbase.idol.imp.OneManBandMap">
-        <property name="instrumentMap">
-            <map>
-                <entry key="GUITAR" value-ref="guitar"/>
-                <entry key="SAXOPHONE" value-ref="saxoPhone"/>
-            </map>
-        </property>
-    </bean>
+  <bean id="hankList" class="com.springbase.idol.imp.OneManBandList">
+    <property name="instruments">
+      <list>
+        <ref bean="saxoPhone"/>
+        <ref bean="guitar"/>
+      </list>
+    </property>
+  </bean>
+  <bean id="hankMap" class="com.springbase.idol.imp.OneManBandMap">
+    <property name="instrumentMap">
+      <map>
+        <entry key="GUITAR" value-ref="guitar"/>
+        <entry key="SAXOPHONE" value-ref="saxoPhone"/>
+      </map>
+    </property>
+  </bean>
 
-    <util:list id="cities">
-        <bean class="com.springbase.idol.imp.City"
-              p:name="xin" p:state="河南" p:population="600"/>
-        <bean class="com.springbase.idol.imp.City"
-              p:name="太原" p:state="山西" p:population="200"/>
-        <bean class="com.springbase.idol.imp.City"
-              p:name="桂林" p:state="广西" p:population="300"/>
-        <bean class="com.springbase.idol.imp.City"
-              p:name="深圳" p:state="广东" p:population="500"/>
-    </util:list>
+  <util:list id="cities">
+    <bean class="com.springbase.idol.imp.City"
+      p:name="xin" p:state="河南" p:population="600"/>
+    <bean class="com.springbase.idol.imp.City"
+      p:name="太原" p:state="山西" p:population="200"/>
+    <bean class="com.springbase.idol.imp.City"
+      p:name="桂林" p:state="广西" p:population="300"/>
+    <bean class="com.springbase.idol.imp.City"
+      p:name="深圳" p:state="广东" p:population="500"/>
+  </util:list>
 
-    <bean id="chooseCity" class="com.springbase.idol.imp.ChooseCity">
-        <!--<property name="theCity" value="#{cities[1]}"/>-->
-        <property name="theCity" value="#{cities[T(java.lang.Math).random()*cities.size()]}"/>
-    </bean>
+  <bean id="chooseCity" class="com.springbase.idol.imp.ChooseCity">
+    <!--<property name="theCity" value="#{cities[1]}"/>-->
+    <property name="theCity" value="#{cities[T(java.lang.Math).random()*cities.size()]}"/>
+  </bean>
+
+  <!--配置AOP-->
+  <bean id="audience" class="com.springbase.idol.imp.Audience"/>
+
+  <aop:config>
+    <aop:aspect ref="audience">
+      <aop:pointcut id="performance"
+        expression="execution(* com.springbase.idol.Performer.perform(..))"/>
+      <!--<aop:before method="takeSeats" pointcut-ref="performance"/>-->
+      <!--<aop:before method="turnOffCellPhones" pointcut-ref="performance"/>-->
+      <!--<aop:after-returning method="applaud" pointcut-ref="performance"/>-->
+      <!--<aop:after-throwing method="demandRefund" pointcut-ref="performance"/>-->
+      <aop:around method="watchPerformance" pointcut-ref="performance"/>
+    </aop:aspect>
+  </aop:config>
 </beans>

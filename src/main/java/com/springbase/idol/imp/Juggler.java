@@ -1,6 +1,8 @@
 package com.springbase.idol.imp;
 
 import com.springbase.idol.Performer;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import sun.misc.Perf;
 
 /**
