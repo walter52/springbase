@@ -95,6 +95,7 @@
 
   <!--配置AOP-->
   <bean id="audience" class="com.springbase.idol.imp.Audience"/>
+  <bean id="magician" class="com.springbase.idol.imp.Magician"/>
 
   <aop:config>
     <aop:aspect ref="audience">
@@ -106,5 +107,12 @@
       <!--<aop:after-throwing method="demandRefund" pointcut-ref="performance"/>-->
       <aop:around method="watchPerformance" pointcut-ref="performance"/>
     </aop:aspect>
+    <aop:aspect ref="magician">
+      <aop:pointcut id="thinking"
+        expression="execution(* com.springbase.idol.Thinker.thinkOfSomethings(String)) and args(thoughts)"/>
+      <aop:before method="interceptThoughts" pointcut-ref="thinking" arg-names="thoughts"/>
+    </aop:aspect>
   </aop:config>
+
+
 </beans>
