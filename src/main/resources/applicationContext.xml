@@ -13,14 +13,14 @@
   <!--自动注解装配（需要<bean>,省略<property>和<constructor-arg>）-->
   <!--<context:annotation-config/>-->
   <!--除了有annotation-config的用处，还可以免<bean>的配置-->
-  <context:component-scan base-package="com.springbase">
+  <context:component-scan base-package="com.springbase.idol">
 
   </context:component-scan>
 
 
-  <bean id="duke" class="com.springbase.idol.imp.Juggler">
-    <constructor-arg value="15"/>
-  </bean>
+  <!--<bean id="duke" class="com.springbase.idol.imp.Juggler">-->
+    <!--<constructor-arg value="15"/>-->
+  <!--</bean>-->
   <bean id="sonnet29" class="com.springbase.idol.imp.Sonnet29"/>
   <bean id="poeticJuggler" class="com.springbase.idol.imp.PoeticJuggler">
     <constructor-arg value="30"/>
@@ -97,7 +97,7 @@
   <bean id="audience" class="com.springbase.idol.imp.Audience"/>
   <bean id="magician" class="com.springbase.idol.imp.Magician"/>
 
-  <aop:config>
+  <aop:config proxy-target-class="true">
     <aop:aspect ref="audience">
       <aop:pointcut id="performance"
         expression="execution(* com.springbase.idol.Performer.perform(..))"/>

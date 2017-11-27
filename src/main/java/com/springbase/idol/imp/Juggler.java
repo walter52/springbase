@@ -8,6 +8,7 @@ import sun.misc.Perf;
 /**
  * Created by walter on 2017/6/14.
  */
+@Component("walter")
 public class Juggler implements Performer {
     private int beanBags = 3;
 

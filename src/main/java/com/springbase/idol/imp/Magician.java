@@ -1,11 +1,13 @@
 package com.springbase.idol.imp;
 
 import com.springbase.idol.MindReader;
+import org.springframework.stereotype.Component;
 
 /**
  * @author walterwu
  * @date 2017/11/21
  */
+@Component("magician")
 public class Magician implements MindReader{
   private String thoughts;
 
