@@ -14,7 +14,6 @@ public class Volunteer implements Thinker {
   public void thinkOfSomethings(String thought) {
     this.thought = thought;
   }
-
   public String getThought(){
     return thought;
   }

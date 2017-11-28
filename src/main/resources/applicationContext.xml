@@ -19,7 +19,7 @@
 
 
   <!--<bean id="duke" class="com.springbase.idol.imp.Juggler">-->
-    <!--<constructor-arg value="15"/>-->
+  <!--<constructor-arg value="15"/>-->
   <!--</bean>-->
   <bean id="sonnet29" class="com.springbase.idol.imp.Sonnet29"/>
   <bean id="poeticJuggler" class="com.springbase.idol.imp.PoeticJuggler">
@@ -111,6 +111,11 @@
       <aop:pointcut id="thinking"
         expression="execution(* com.springbase.idol.Thinker.thinkOfSomethings(String)) and args(thoughts)"/>
       <aop:before method="interceptThoughts" pointcut-ref="thinking" arg-names="thoughts"/>
+    </aop:aspect>
+    <aop:aspect>
+      <aop:declare-parents types-matching="com.springbase.idol.Performer+"
+        implement-interface="com.springbase.idol.Contestant"
+        default-impl="com.springbase.idol.imp.GraciousContestant"/>
     </aop:aspect>
   </aop:config>
 
