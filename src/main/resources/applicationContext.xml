@@ -96,6 +96,7 @@
   <!--配置AOP-->
   <bean id="audience" class="com.springbase.idol.imp.Audience"/>
   <bean id="magician" class="com.springbase.idol.imp.Magician"/>
+  <bean id="audienceAnnotation" class="com.springbase.idol.imp.AudienceForAnnotation"/>
 
   <aop:config proxy-target-class="true">
     <aop:aspect ref="audience">
@@ -119,5 +120,7 @@
     </aop:aspect>
   </aop:config>
 
+  <!--用于注解的方法定义切面，简化spring的自动代理创建类-->
+  <aop:aspectj-autoproxy/>
 
 </beans>

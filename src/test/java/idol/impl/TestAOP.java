@@ -19,6 +19,8 @@ public class TestAOP extends BaseTest {
   private Thinker volunteer;
   @Autowired
   private MindReader magician;
+
+  //xml配置使用AOP
   @Test
   public void readMindTest() {
 //    walter.perform();  //aop:在方法前后执行切面方法
@@ -26,6 +28,12 @@ public class TestAOP extends BaseTest {
     Contestant contestant = (Contestant)walter; //为一个对象增加新的方法
     contestant.receiveAward();  //调用AOP添加的父类方法必须强转才能调用
     System.out.println("return thoughts:"+ magician.getThoughts());
+  }
+
+  //利用注解的方法使用AOP（AudienceForAnnotation）
+  @Test
+  public void AnnotationAOPTest(){
+    walter.perform();
   }
 
 }
