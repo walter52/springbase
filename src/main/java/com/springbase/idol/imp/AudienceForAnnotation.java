@@ -1,7 +1,9 @@
 package com.springbase.idol.imp;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -37,4 +39,18 @@ public class AudienceForAnnotation {
     System.out.println("退款Annotation");
   }
 
+  @Around("performance()")
+  public void watchPerformance(ProceedingJoinPoint joinPoint){
+    try{
+      System.out.println("找座位Annotation-around");
+      System.out.println("关闭手机Annotation-around");
+      long start = System.currentTimeMillis();
+      joinPoint.proceed();
+      long end = System.currentTimeMillis();
+      System.out.println("鼓掌Annotation-around");
+      System.out.println("时长Annotation-around:"+(end-start));
+    }catch (Throwable t){
+      System.out.println("退款Annotation-around");
+    }
+  }
 }
