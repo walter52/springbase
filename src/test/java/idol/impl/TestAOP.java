@@ -36,4 +36,9 @@ public class TestAOP extends BaseTest {
     walter.perform();
   }
 
+  //利用aspectJ实施更细致的AOP，此切面有两点注意：1，编译器要切换为aspectJ的编译器 2.与spring注解切面冲突
+  @Test
+  public void aspectJAopTest(){
+    walter.perform();
+  }
 }

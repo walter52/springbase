@@ -87,6 +87,17 @@
     <bean class="com.springbase.idol.imp.City"
       p:name="深圳" p:state="广东" p:population="500"/>
   </util:list>
+  
+  <bean id="criticismEnginebean" class="com.springbase.idol.imp.CriticismEngineImpl">
+    <property name="criticismPool">
+      <list>
+        <value>criticism 1</value>
+        <value>criticism 2</value>
+        <value>criticism 3</value>
+        <value>criticism 4</value>
+      </list>
+    </property>
+  </bean>
 
   <bean id="chooseCity" class="com.springbase.idol.imp.ChooseCity">
     <!--<property name="theCity" value="#{cities[1]}"/>-->
@@ -121,6 +132,10 @@
   </aop:config>
 
   <!--用于注解的方法定义切面，简化spring的自动代理创建类-->
-  <aop:aspectj-autoproxy/>
+  <!--<aop:aspectj-autoproxy/>-->
 
+  <!--AspectJ可以通过spring依赖注入-->
+  <bean class="com.springbase.idol.aop.JudgeAspect" factory-method="aspectOf">
+    <property name="criticismEngine" ref="criticismEnginebean"/>
+  </bean>
 </beans>
