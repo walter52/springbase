@@ -6,6 +6,11 @@ import com.springbase.idol.imp.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -41,7 +46,10 @@ public class MainTask {
     //输出
 //    performer.perform();
     //反射
-//    AboutReflect.doReflect();
+    AboutReflect.doReflect();
 
+    Map<String,String> map = new HashMap<>();
+    map.put("123","321");
+    Collections.synchronizedMap(map);
   }
 }
