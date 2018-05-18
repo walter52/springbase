@@ -1,4 +1,4 @@
-package com.springbase.idol.designMode;
+package com.springbase.idol.designMode.singleton;
 
 /**
  * @author walterwu

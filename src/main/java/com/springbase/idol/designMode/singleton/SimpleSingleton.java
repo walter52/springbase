@@ -1,4 +1,4 @@
-package com.springbase.idol.designMode;
+package com.springbase.idol.designMode.singleton;
 
 /**
  * 简单的单例模式(多线程高并发下会有问题)
